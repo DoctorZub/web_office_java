@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEquipmentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateEquipmentLabel_equipmentId}" for="equipmentId" />
+                    <h:inputText id="equipmentId" value="#{equipmentController.selected.equipmentId}" title="#{bundle.CreateEquipmentTitle_equipmentId}" required="true" requiredMessage="#{bundle.CreateEquipmentRequiredMessage_equipmentId}"/>
+                    <h:outputLabel value="#{bundle.CreateEquipmentLabel_equipName}" for="equipName" />
+                    <h:inputText id="equipName" value="#{equipmentController.selected.equipName}" title="#{bundle.CreateEquipmentTitle_equipName}" required="true" requiredMessage="#{bundle.CreateEquipmentRequiredMessage_equipName}"/>
+                    <h:outputLabel value="#{bundle.CreateEquipmentLabel_inventoryNumber}" for="inventoryNumber" />
+                    <h:inputText id="inventoryNumber" value="#{equipmentController.selected.inventoryNumber}" title="#{bundle.CreateEquipmentTitle_inventoryNumber}" required="true" requiredMessage="#{bundle.CreateEquipmentRequiredMessage_inventoryNumber}"/>
+                    <h:outputLabel value="#{bundle.CreateEquipmentLabel_capacity}" for="capacity" />
+                    <h:inputText id="capacity" value="#{equipmentController.selected.capacity}" title="#{bundle.CreateEquipmentTitle_capacity}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentLabel_productionYear}" for="productionYear" />
+                    <h:inputText id="productionYear" value="#{equipmentController.selected.productionYear}" title="#{bundle.CreateEquipmentTitle_productionYear}" required="true" requiredMessage="#{bundle.CreateEquipmentRequiredMessage_productionYear}"/>
+                    <h:outputLabel value="#{bundle.CreateEquipmentLabel_laskCheck}" for="laskCheck" />
+                    <h:inputText id="laskCheck" value="#{equipmentController.selected.laskCheck}" title="#{bundle.CreateEquipmentTitle_laskCheck}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEquipmentLabel_nextCheck}" for="nextCheck" />
+                    <h:inputText id="nextCheck" value="#{equipmentController.selected.nextCheck}" title="#{bundle.CreateEquipmentTitle_nextCheck}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEquipmentLabel_price}" for="price" />
+                    <h:inputText id="price" value="#{equipmentController.selected.price}" title="#{bundle.CreateEquipmentTitle_price}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentLabel_installPlace}" for="installPlace" />
+                    <h:selectOneMenu id="installPlace" value="#{equipmentController.selected.installPlace}" title="#{bundle.CreateEquipmentTitle_installPlace}" required="true" requiredMessage="#{bundle.CreateEquipmentRequiredMessage_installPlace}">
+                        <f:selectItems value="#{installPlaceController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateEquipmentLabel_responsible}" for="responsible" />
+                    <h:selectOneMenu id="responsible" value="#{equipmentController.selected.responsible}" title="#{bundle.CreateEquipmentTitle_responsible}" required="true" requiredMessage="#{bundle.CreateEquipmentRequiredMessage_responsible}">
+                        <f:selectItems value="#{responsiblesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateEquipmentLabel_supplier}" for="supplier" />
+                    <h:selectOneMenu id="supplier" value="#{equipmentController.selected.supplier}" title="#{bundle.CreateEquipmentTitle_supplier}" required="true" requiredMessage="#{bundle.CreateEquipmentRequiredMessage_supplier}">
+                        <f:selectItems value="#{suppliersController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{equipmentController.create}" value="#{bundle.CreateEquipmentSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{equipmentController.prepareList}" value="#{bundle.CreateEquipmentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateEquipmentIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

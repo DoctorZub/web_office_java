@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="ЭВС"/>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEquipmentEmpty}" rendered="#{equipmentController.itemsEVS.rowCount == 0}"/>
+                <h:panelGroup rendered="#{equipmentController.itemsEVS.rowCount > 0}">
+                    <h:dataTable value="#{equipmentController.itemsEVS}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentTitle_equipName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.equipName}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentTitle_inventoryNumber}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.inventoryNumber}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentTitle_capacity}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.capacity}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentTitle_productionYear}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.productionYear}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentTitle_laskCheck}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.laskCheck}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentTitle_nextCheck}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nextCheck}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentTitle_price}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.price}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{equipmentController.prepareViewEVS}" value="Подробнее"/>
+                            <h:outputText value=" "/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <br />
+                <h:outputText value="Сумма оборудования: "/>
+       <h:outputText value="#{equipmentController.sumPriceEVS()}  руб."/>
+                <br />
+                <div class="card">
+       <h:button outcome="/welcomepage" value="Домашняя"/>
+                </div>
+       <br />
+       <h:button outcome="depart" value="Назад"/>
+       <br />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

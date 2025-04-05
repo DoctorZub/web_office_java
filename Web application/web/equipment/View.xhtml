@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEquipmentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_equipmentId}"/>
+                    <h:outputText value="#{equipmentController.getSelected().equipmentId}" title="#{bundle.ViewEquipmentTitle_equipmentId}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_equipName}"/>
+                    <h:outputText value="#{equipmentController.selected.equipName}" title="#{bundle.ViewEquipmentTitle_equipName}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_inventoryNumber}"/>
+                    <h:outputText value="#{equipmentController.selected.inventoryNumber}" title="#{bundle.ViewEquipmentTitle_inventoryNumber}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_capacity}"/>
+                    <h:outputText value="#{equipmentController.selected.capacity}" title="#{bundle.ViewEquipmentTitle_capacity}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_productionYear}"/>
+                    <h:outputText value="#{equipmentController.selected.productionYear}" title="#{bundle.ViewEquipmentTitle_productionYear}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_laskCheck}"/>
+                    <h:outputText value="#{equipmentController.selected.laskCheck}" title="#{bundle.ViewEquipmentTitle_laskCheck}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_nextCheck}"/>
+                    <h:outputText value="#{equipmentController.selected.nextCheck}" title="#{bundle.ViewEquipmentTitle_nextCheck}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_price}"/>
+                    <h:outputText value="#{equipmentController.selected.price}" title="#{bundle.ViewEquipmentTitle_price}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_installPlace}"/>
+                    <h:outputText value="#{equipmentController.selected.installPlace}" title="#{bundle.ViewEquipmentTitle_installPlace}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_responsible}"/>
+                    <h:outputText value="#{equipmentController.selected.responsible}" title="#{bundle.ViewEquipmentTitle_responsible}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_supplier}"/>
+                    <h:outputText value="#{equipmentController.selected.supplier}" title="#{bundle.ViewEquipmentTitle_supplier}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{equipmentController.destroyAndView}" value="#{bundle.ViewEquipmentDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEquipmentEditLink}"/>
+                <br />
+                <h:commandLink action="#{equipmentController.prepareCreate}" value="#{bundle.ViewEquipmentCreateLink}" />
+                <br />
+                <h:commandLink action="#{equipmentController.prepareList}" value="#{bundle.ViewEquipmentShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEquipmentIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
