@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListResponsiblesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListResponsiblesEmpty}" rendered="#{responsiblesController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{responsiblesController.items.rowCount > 0}">
+                    <h:outputText value="#{responsiblesController.pagination.pageFirstItem + 1}..#{responsiblesController.pagination.pageLastItem + 1}/#{responsiblesController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{responsiblesController.previous}" value="#{bundle.Previous} #{responsiblesController.pagination.pageSize}" rendered="#{responsiblesController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{responsiblesController.next}" value="#{bundle.Next} #{responsiblesController.pagination.pageSize}" rendered="#{responsiblesController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{responsiblesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResponsiblesTitle_responsiblesId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.responsiblesId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResponsiblesTitle_lastName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lastName}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResponsiblesTitle_firstName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.firstName}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResponsiblesTitle_middleName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.middleName}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResponsiblesTitle_departmentRespons}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.departmentRespons}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResponsiblesTitle_post}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.post}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResponsiblesTitle_countryRespons}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.countryRespons}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResponsiblesTitle_cityRespons}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cityRespons}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{responsiblesController.prepareView}" value="#{bundle.ListResponsiblesViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{responsiblesController.prepareEdit}" value="#{bundle.ListResponsiblesEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{responsiblesController.destroy}" value="#{bundle.ListResponsiblesDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{responsiblesController.prepareCreate}" value="#{bundle.ListResponsiblesCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListResponsiblesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

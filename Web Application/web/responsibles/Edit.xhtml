@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditResponsiblesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditResponsiblesLabel_responsiblesId}" for="responsiblesId" />
+                    <h:inputText id="responsiblesId" value="#{responsiblesController.selected.responsiblesId}" title="#{bundle.EditResponsiblesTitle_responsiblesId}" required="true" requiredMessage="#{bundle.EditResponsiblesRequiredMessage_responsiblesId}"/>
+                    <h:outputLabel value="#{bundle.EditResponsiblesLabel_lastName}" for="lastName" />
+                    <h:inputText id="lastName" value="#{responsiblesController.selected.lastName}" title="#{bundle.EditResponsiblesTitle_lastName}" required="true" requiredMessage="#{bundle.EditResponsiblesRequiredMessage_lastName}"/>
+                    <h:outputLabel value="#{bundle.EditResponsiblesLabel_firstName}" for="firstName" />
+                    <h:inputText id="firstName" value="#{responsiblesController.selected.firstName}" title="#{bundle.EditResponsiblesTitle_firstName}" required="true" requiredMessage="#{bundle.EditResponsiblesRequiredMessage_firstName}"/>
+                    <h:outputLabel value="#{bundle.EditResponsiblesLabel_middleName}" for="middleName" />
+                    <h:inputText id="middleName" value="#{responsiblesController.selected.middleName}" title="#{bundle.EditResponsiblesTitle_middleName}" />
+                    <h:outputLabel value="#{bundle.EditResponsiblesLabel_departmentRespons}" for="departmentRespons" />
+                    <h:inputText id="departmentRespons" value="#{responsiblesController.selected.departmentRespons}" title="#{bundle.EditResponsiblesTitle_departmentRespons}" required="true" requiredMessage="#{bundle.EditResponsiblesRequiredMessage_departmentRespons}"/>
+                    <h:outputLabel value="#{bundle.EditResponsiblesLabel_post}" for="post" />
+                    <h:inputText id="post" value="#{responsiblesController.selected.post}" title="#{bundle.EditResponsiblesTitle_post}" required="true" requiredMessage="#{bundle.EditResponsiblesRequiredMessage_post}"/>
+                    <h:outputLabel value="#{bundle.EditResponsiblesLabel_countryRespons}" for="countryRespons" />
+                    <h:inputText id="countryRespons" value="#{responsiblesController.selected.countryRespons}" title="#{bundle.EditResponsiblesTitle_countryRespons}" required="true" requiredMessage="#{bundle.EditResponsiblesRequiredMessage_countryRespons}"/>
+                    <h:outputLabel value="#{bundle.EditResponsiblesLabel_cityRespons}" for="cityRespons" />
+                    <h:inputText id="cityRespons" value="#{responsiblesController.selected.cityRespons}" title="#{bundle.EditResponsiblesTitle_cityRespons}" required="true" requiredMessage="#{bundle.EditResponsiblesRequiredMessage_cityRespons}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{responsiblesController.update}" value="#{bundle.EditResponsiblesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditResponsiblesViewLink}"/>
+                <br />
+                <h:commandLink action="#{responsiblesController.prepareList}" value="#{bundle.EditResponsiblesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditResponsiblesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

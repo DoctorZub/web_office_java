@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSuppliersTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSuppliersLabel_suppliersId}" for="suppliersId" />
+                    <h:inputText id="suppliersId" value="#{suppliersController.selected.suppliersId}" title="#{bundle.CreateSuppliersTitle_suppliersId}" required="true" requiredMessage="#{bundle.CreateSuppliersRequiredMessage_suppliersId}"/>
+                    <h:outputLabel value="#{bundle.CreateSuppliersLabel_suppiersName}" for="suppiersName" />
+                    <h:inputText id="suppiersName" value="#{suppliersController.selected.suppiersName}" title="#{bundle.CreateSuppliersTitle_suppiersName}" required="true" requiredMessage="#{bundle.CreateSuppliersRequiredMessage_suppiersName}"/>
+                    <h:outputLabel value="#{bundle.CreateSuppliersLabel_countrySupplier}" for="countrySupplier" />
+                    <h:inputText id="countrySupplier" value="#{suppliersController.selected.countrySupplier}" title="#{bundle.CreateSuppliersTitle_countrySupplier}" />
+                    <h:outputLabel value="#{bundle.CreateSuppliersLabel_citySuppliers}" for="citySuppliers" />
+                    <h:inputText id="citySuppliers" value="#{suppliersController.selected.citySuppliers}" title="#{bundle.CreateSuppliersTitle_citySuppliers}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{suppliersController.create}" value="#{bundle.CreateSuppliersSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{suppliersController.prepareList}" value="#{bundle.CreateSuppliersShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSuppliersIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

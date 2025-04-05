@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateInstallPlaceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateInstallPlaceLabel_placeId}" for="placeId" />
+                    <h:inputText id="placeId" value="#{installPlaceController.selected.placeId}" title="#{bundle.CreateInstallPlaceTitle_placeId}" required="true" requiredMessage="#{bundle.CreateInstallPlaceRequiredMessage_placeId}"/>
+                    <h:outputLabel value="#{bundle.CreateInstallPlaceLabel_departmentPlace}" for="departmentPlace" />
+                    <h:inputText id="departmentPlace" value="#{installPlaceController.selected.departmentPlace}" title="#{bundle.CreateInstallPlaceTitle_departmentPlace}" required="true" requiredMessage="#{bundle.CreateInstallPlaceRequiredMessage_departmentPlace}"/>
+                    <h:outputLabel value="#{bundle.CreateInstallPlaceLabel_cabinetNumber}" for="cabinetNumber" />
+                    <h:inputText id="cabinetNumber" value="#{installPlaceController.selected.cabinetNumber}" title="#{bundle.CreateInstallPlaceTitle_cabinetNumber}" required="true" requiredMessage="#{bundle.CreateInstallPlaceRequiredMessage_cabinetNumber}"/>
+                    <h:outputLabel value="#{bundle.CreateInstallPlaceLabel_peopleNumber}" for="peopleNumber" />
+                    <h:inputText id="peopleNumber" value="#{installPlaceController.selected.peopleNumber}" title="#{bundle.CreateInstallPlaceTitle_peopleNumber}" required="true" requiredMessage="#{bundle.CreateInstallPlaceRequiredMessage_peopleNumber}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{installPlaceController.create}" value="#{bundle.CreateInstallPlaceSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{installPlaceController.prepareList}" value="#{bundle.CreateInstallPlaceShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateInstallPlaceIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
